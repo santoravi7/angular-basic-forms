@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" [hidden]="submitted">
   {{diagnostic}}
   <h2>Forms</h2>
-  <form #heroForm="ngForm">
+  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
       <div class="form-group">
         
         <input typeS="text" class="form-control" id="name" placeholder="Name" required [(ngModel)]="model.name" name="name"  #spy/>      
@@ -10,9 +10,23 @@
         
         <input type="text" class="form-control" id="name" placeholder="Experience" required [(ngModel)]="model.experience" name="experience"/>      
       </div>
-      <button type="submit" class="btn btn-success" >Submit</button>
-      <br>
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid" >Submit</button>
+      
       <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero</button>
       <br> <br>
   </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <label>Name : </label>
+    <label>{{ model.name }}</label>
+  </div>
+  <div class="row">
+    <label>Experience : </label>
+    <label>{{ model.experience }}</label>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
 </div>
