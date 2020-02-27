@@ -10,7 +10,9 @@
         
         <input type="text" class="form-control" id="name" placeholder="Experience" required [(ngModel)]="model.experience" name="experience"/>      
       </div>
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" class="btn btn-success" >Submit</button>
+      <br>
+      <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero</button>
       <br> <br>
   </form>
 </div>

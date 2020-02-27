@@ -9,10 +9,14 @@ export class HeroComponent implements OnInit {
   submitted = false;
   model = new HeroForm(1,'Santosh','3 years');
   constructor() { }
-   
+  
   ngOnInit() {
   }
   
+  newHero() {
+    this.model = new HeroForm(42, '', '');
+  }
+
   get diagnostic(){
     return JSON.stringify(this.model);
   } 
